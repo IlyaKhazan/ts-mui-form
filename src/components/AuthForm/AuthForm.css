@@ -1,22 +1,22 @@
 .auth-form {
   width: 50vh;
-  height: 100vh;
-  padding: 15px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 2px solid grey;
+  text-align: center;
 }
 
-auth-form__subtitle {
+.auth-form__subtitle {
   color: grey;
 }
 
-auth-form__input {
-  margin: 20px;
+.auth-form__form {
+  max-width: 400px;
 }
 
-auth-form__form {
-  max-width: 400px;
+.authform__success-text {
+  color: green;
 }
