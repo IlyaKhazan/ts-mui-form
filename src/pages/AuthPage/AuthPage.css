@@ -1,5 +1,6 @@
 .auth-page {
-  height: 100vh;
   display: flex;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
 }

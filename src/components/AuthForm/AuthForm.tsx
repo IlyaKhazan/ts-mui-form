@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, TextField, Button } from '@mui/material';
 import { useForm, Controller, SubmitHandler, useFormState } from 'react-hook-form';
 import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 import './AuthForm.css';
 import { fieldValidation } from './validation';
+import { delSpaces } from '../../util';
+import axios from 'axios'
 
 interface IForm {
     name: string;
@@ -12,12 +14,21 @@ interface IForm {
 }
 
 export const AuthForm: React.FC = () => {
-
     const { handleSubmit, control } = useForm<IForm>();
     const { errors } = useFormState({ control });
 
+    const [postedData, setPostedData] = useState(null)
 
-    const onSubmit: SubmitHandler<IForm> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<IForm> = (data) => {
+
+        axios.post('https://jsonplaceholder.typicode.com/posts', { ...data, phone: delSpaces(data.phone) })
+            .then(response => setPostedData(response.data))
+            .catch(error => {
+                console.log(error)
+            })
+    }
+    console.log(postedData)
+
     return (
         <div className='auth-form'>
             <Typography variant="h4" component="div">
@@ -89,6 +100,7 @@ export const AuthForm: React.FC = () => {
                 />
                 <Button type="submit" variant="contained" fullWidth={true} sx={{ mt: 2 }}>Войти</Button>
             </form>
+            {/* //  {postedData && <ul>{postedData.map(el => <li>el</li>)}</ul>} */}
         </div >
     )
 }
