@@ -12,3 +12,11 @@
 auth-form__subtitle {
   color: grey;
 }
+
+auth-form__input {
+  margin: 20px;
+}
+
+auth-form__form {
+  max-width: 400px;
+}
