@@ -1,12 +1,13 @@
 import React from 'react';
 import { Typography, TextField, Button } from '@mui/material';
 import { useForm, Controller, SubmitHandler, useFormState } from 'react-hook-form';
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 import './AuthForm.css';
-import { fieldValidation, passwordValidation } from './validation';
+import { fieldValidation } from './validation';
 
 interface IForm {
     name: string;
-    phone?: string;
+    phone: string;
     text: string;
 }
 
@@ -48,6 +49,25 @@ export const AuthForm: React.FC = () => {
                 />
                 <Controller
                     control={control}
+                    name="phone"
+                    rules={{ validate: matchIsValidTel, required: 'asd' }}
+                    render={({ field, fieldState }) => (
+                        <MuiTelInput className='form__phone-input'
+                            {...field}
+                            label="Телефон"
+                            size="medium"
+                            margin="normal"
+                            fullWidth={true}
+                            onChange={(e) => field.onChange(e)}
+                            value={field.value}
+                            helperText={fieldState.error ? "Введите корректный номер телефона" : null}
+                            error={!!fieldState.error}
+                            disableDropdown
+                        />
+                    )}
+                />
+                <Controller
+                    control={control}
                     name="text"
                     rules={fieldValidation}
                     render={({ field }) => (
@@ -67,7 +87,7 @@ export const AuthForm: React.FC = () => {
                         />
                     )}
                 />
-                <Button type="submit" variant="contained" fullWidth={true}>Войти</Button>
+                <Button type="submit" variant="contained" fullWidth={true} sx={{ mt: 2 }}>Войти</Button>
             </form>
         </div >
     )

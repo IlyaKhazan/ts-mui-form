@@ -12,14 +12,3 @@ export const fieldValidation = {
     }
 }
 
-export const passwordValidation = {
-    required: REQUIRED_FIELD,
-    validate: (value: string) => {
-
-        if (value.length < 7) {
-            return "Пароль должен содержать не менее 5 символов"
-        }
-
-        return true
-    }
-}
