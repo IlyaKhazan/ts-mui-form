@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthForm } from '../../components/AuthForm';
+import { AuthForm } from '../../components/AuthForm/AuthForm';
 import { Typography } from '@mui/material';
 import './AuthPage.css';
 
