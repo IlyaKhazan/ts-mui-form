@@ -5,20 +5,8 @@ import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 import './AuthForm.css';
 import { fieldValidation } from './validation';
 import { delSpaces } from '../../util';
+import { IForm, IModal } from '../../types';
 import axios from 'axios'
-
-interface IForm {
-    name: string;
-    phone: string;
-    text: string;
-}
-
-interface IModal {
-    isModalOpened: boolean;
-    setIsModalOpened: any;
-    isPosted: boolean;
-    setIsPosted: any;
-}
 
 export const AuthForm: React.FC<IModal> = ({ isModalOpened, setIsModalOpened, isPosted, setIsPosted }) => {
     const API_URL = 'https://jsonplaceholder.typicode.com/posts'

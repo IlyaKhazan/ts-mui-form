@@ -1,6 +1,5 @@
 const REQUIRED_FIELD = 'Обязательно для заполнения'
 
-
 export const fieldValidation = {
     required: REQUIRED_FIELD,
     validate: (value: string) => {
@@ -11,4 +10,3 @@ export const fieldValidation = {
         return true;
     }
 }
-
